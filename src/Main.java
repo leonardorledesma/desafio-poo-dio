@@ -4,9 +4,12 @@ import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[]args){
+
+        Scanner sc = new Scanner(System.in);
 
         Curso curso1 = new Curso();
 
@@ -30,19 +33,43 @@ public class Main {
         bootcamp.getConteudos().add(curso1);
         bootcamp.getConteudos().add(curso2);
         bootcamp.getConteudos().add(mentoria);
+        Dev dev1 = new Dev();
+        String nome;
 
-        Dev devLeonardo = new Dev();
-        devLeonardo.setNome("Leonardo");
-        devLeonardo.inscreverBootcamp(bootcamp);
-        System.out.println("Conteudos inscritos de Leonardo: " + devLeonardo.getConteudosInscritos());
-        devLeonardo.progredir();
-        System.out.println("Conteudos inscritos de Leonardo: " + devLeonardo.getConteudosInscritos());
-        System.out.println("Conteudos concluidos de Leonardo: " + devLeonardo.getConteudosConcluidos());
-        System.out.println(devLeonardo.calcularTotalXp());
 
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
+        System.out.println("Deseja realizar seu cadastro na plataforma? (s/n)");
+        char resposta =sc.next().charAt(0);
+        if (resposta == 's'){
+            System.out.println("Digite seu nome: ");
+            nome = sc.next();
+            dev1.setNome(nome);
+            System.out.println("Deseja se inscrever no Boobtcamp? (s/n)");
+            char resposta1 = sc.next().charAt(0);
+
+            if(resposta1 =='s'){
+                dev1.inscreverBootcamp(bootcamp);
+                System.out.println("Conteudos inscritos de Leonardo: " + dev1.getConteudosInscritos());
+
+                System.out.println("Curso concluido? ");
+                char resposta2 = sc.next().charAt(0);
+
+                if(resposta2 == 's') {
+                    dev1.progredir();
+                    System.out.println("Conteudos inscritos de Leonardo: " + dev1.getConteudosInscritos());
+                    System.out.println("Conteudos concluidos de Leonardo: " + dev1.getConteudosConcluidos());
+                    System.out.println("Xp total: " + dev1.calcularTotalXp());
+                }else {
+                    System.out.println("Conteudos inscritos de Leonardo: " + dev1.getConteudosInscritos());
+                    System.out.println("Conteudos concluidos de Leonardo: " + dev1.getConteudosConcluidos());
+                    System.out.println("Xp total: " + dev1.calcularTotalXp());}
+
+            }else System.out.println("Dev não inscrito no Bootcamp!!");
+
+        }else System.out.println("Cadastramento cancelado!");
+
+
+
+
 
     }
 }

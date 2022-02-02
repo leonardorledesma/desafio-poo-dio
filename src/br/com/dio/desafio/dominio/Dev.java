@@ -17,8 +17,7 @@ public class Dev {
         if (conteudo.isPresent()){
             this.conteudosConcluidos.add(conteudo.get());
             this.conteudosInscritos.remove(conteudo.get());
-
-        }else System.err.println("Voçê não está inscrito em nenhum Bootcamp");
+        }
     }
 
     public double calcularTotalXp(){
@@ -60,5 +59,10 @@ public class Dev {
     @Override
     public int hashCode() {
         return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome;
     }
 }
